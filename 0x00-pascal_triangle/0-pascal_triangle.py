@@ -9,11 +9,12 @@ def pascal_triangle(n):
     triangle = []
     if n <= 0:
         return []
-    for i in range(n):
-        lst = []
-        for j in range(i+1):
-            ls = factorial(i) // (factorial(j) * factorial(i-j))
-            lst.append(ls)
-        tmp = lst
-        triangle.append(tmp)
-    return triangle
+    else:
+        for i in range(n):
+            lst = []
+            for j in range(i+1):
+                ls = factorial(i) // (factorial(j) * factorial(i-j))
+                lst.append(ls)
+            tmp = lst
+            triangle.append(tmp)
+        return triangle
