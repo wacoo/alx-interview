@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 ''' return alist for integers representing pascal triangle '''
-from math import factorial
 
 
 def pascal_triangle(n):
@@ -9,7 +8,7 @@ def pascal_triangle(n):
     triangle = []
     if type(n) is not int or n <= 0:
         return []
-    
+
     for i in range(n):
         lst = []
         for j in range(i+1):
@@ -17,3 +16,11 @@ def pascal_triangle(n):
             lst.append(ls)
         triangle.append(lst)
     return triangle
+
+
+def factorial(n):
+    ''' returns a factorial of n '''
+    f = 1
+    for i in range(1, n + 1):
+        f = f * i
+    return f
