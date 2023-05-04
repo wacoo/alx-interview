@@ -23,6 +23,19 @@ Number of operations: 6
 def minOperations(n):
     ''' retuns number of operations needed to
     copy and paste H n times '''
-
-    base = 4
-    return base + (int(n/base))
+    clipboard = 0
+    char = 'H'
+    tmp = ''
+    ca = 0
+    p = 0
+    actions = 0
+    while len(char) < n:
+        if n % len(char) == 0:
+            ca += 1
+            p += 1
+            tmp = char
+            char += char
+        else:
+            p += 1
+            char += tmp
+    return ca + p
