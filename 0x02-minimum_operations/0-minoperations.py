@@ -23,7 +23,7 @@ Number of operations: 6
 def minOperations(n):
     ''' retuns number of operations needed to
     copy and paste H n times '''
-    if n <= 0:
+    if n <= 0 or type(n) != int:
         return 0
     char = 'H'
     tmp = ''
