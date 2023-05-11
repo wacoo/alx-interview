@@ -14,7 +14,7 @@ code_cnt = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0,
 
 try:
     for line in stdin:
-        code_no = line.strip().split(' ')
+        code_no = line.split(' ')
         if len(code_no) > 4:
             if int(code_no[-2]) in scodes:
                 code_cnt[int(code_no[-2])] += 1
