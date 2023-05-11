@@ -15,10 +15,11 @@ code_cnt = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0,
 try:
     for line in stdin:
         code_no = line.strip().split(' ')
-        if int(code_no[-2]) in scodes:
-            code_cnt[int(code_no[-2])] += 1
-        tfile_size += int(code_no[-1])
-        counter += 1
+        if len(code_no) > 4:
+            if int(code_no[-2]) in scodes:
+                code_cnt[int(code_no[-2])] += 1
+            tfile_size += int(code_no[-1])
+            counter += 1
 
         if counter == 10:
             counter = 0
