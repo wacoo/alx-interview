@@ -22,7 +22,7 @@ for line in stdin:
         code_cnt.update({200: 0, 301: 0, 400: 0, 403: 0,
                         404: 0, 405: 0, 500: 0})'''
     else:
-        if int(code_no[-2]) in scodes and code_no[-1].isdigit():
+        if int(code_no[-2]) in scodes:
             code_cnt[int(code_no[-2])] += 1
-            tfile_size += int(code_no[-1])
-            counter += 1
+        tfile_size += int(code_no[-1])
+        counter += 1
