@@ -14,19 +14,19 @@ code_cnt = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0,
 
 try:
     for line in stdin:
-        code_no = line.split(' ')
+        code_no = line.lstrip().split(' ')
         if len(code_no) > 4:
             if int(code_no[-2]) in scodes:
                 code_cnt[int(code_no[-2])] += 1
             tfile_size += int(code_no[-1])
             counter += 1
 
-        if counter == 10:
-            counter = 0
-            print('File size: {}'.format(tfile_size))
-            for key, val in sorted(code_cnt.items()):
-                if val != 0:
-                    print('{}: {}'.format(key, val))
+            if counter == 10:
+                counter = 0
+                print('File size: {}'.format(tfile_size))
+                for key, val in sorted(code_cnt.items()):
+                    if val != 0:
+                        print('{}: {}'.format(key, val))
 
 except Exception as e:
     pass
