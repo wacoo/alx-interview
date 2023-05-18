@@ -16,14 +16,17 @@ def validUTF8(data):
     ''' return True or False depending on whether the data given is UTF-8 '''
     for i in range(len(data)):
         if data[i] >= 192 and data[i] <= 247:
-            if (data[i] >= 192 and data[i] <= 223) and ((i + 1) < len(data)):
+            if (data[i] >= 192 and data[i] <= 223):
+                '''and ((i + 1) < len(data)):'''
                 if data[i+1] < 128 or data[i+1] > 191:
                     return False
-            elif data[i] >= 224 and data[i] <= 239 and ((i + 2) < len(data)):
+            elif data[i] >= 224 and data[i] <= 239:
+                ''' and ((i + 2) < len(data)):'''
                 if (((data[i+1] and data[i+2]) < 128) or
                         ((data[i+1] and data[i+2]) > 191)):
                     return False
-            elif data[i] >= 240 and data[i] <= 247 and ((i + 2) < len(data)):
+            elif data[i] >= 240 and data[i] <= 247:
+                ''' and ((i + 2) < len(data)):'''
                 if (((data[i+1] and data[i+2] and data[i+3]) < 128) or
                         ((data[i+1] and data[i+2] and data[i+3]) > 191)):
                     return False
