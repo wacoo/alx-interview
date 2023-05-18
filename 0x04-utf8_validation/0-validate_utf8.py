@@ -14,17 +14,17 @@ the 8 least significant bits of each integer
 
 def validUTF8(data):
     ''' return True or False depending on whether the data given is UTF-8 '''
-    for val in range(len(data)):
-        if data[0] >= 192 and data[0] <= 247:
-            if data[0] >= 192 and data[0] <= 223:
-                if data[1] < 128 or data[1] > 191:
+    for i in range(len(data)):
+        if data[i] >= 192 and data[i] <= 247:
+            if (data[i] >= 192 and data[i] <= 223) and ((i + 1) < len(data)):
+                if data[i+1] < 128 or data[i+1] > 191:
                     return False
-            elif data[0] >= 224 and data[0] <= 239:
-                if (((data[1] and data[2]) < 128) or
-                        ((data[1] and data[2]) > 191)):
+            elif data[i] >= 224 and data[i] <= 239 and ((i + 2) < len(data)):
+                if (((data[i+1] and data[i+2]) < 128) or
+                        ((data[i+1] and data[i+2]) > 191)):
                     return False
-            elif data[0] >= 240 and data[0] <= 247:
-                if (((data[1] and data[2] and data[3]) < 128) or
-                        ((data[1] and data[2] and data[3]) > 191)):
+            elif data[i] >= 240 and data[i] <= 247 and ((i + 2) < len(data)):
+                if (((data[i+1] and data[i+2] and data[i+3]) < 128) or
+                        ((data[i+1] and data[i+2] and data[i+3]) > 191)):
                     return False
     return True
