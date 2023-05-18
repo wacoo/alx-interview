@@ -15,32 +15,17 @@ the 8 least significant bits of each integer
 def validUTF8(data):
     ''' return True or False depending on whether the data given is UTF-8 '''
     for i in range(len(data)):
-        bv = format(data[i], '08b')
-        nxtb = '10'
-        oneb = '110'
-        twob = '1110'
-        threeb = '11110'
-
-        nxt1 = ''
-        nxt2 = ''
-        nxt3 = ''
-        if len(data) > (i + 1):
-            nxt1 = format(data[i + 1], '08b')
-        if len(data) > (i + 2):
-            nxt2 = format(data[i + 2], '08b')
-        if len(data) > (i + 3):
-            nxt3 = format(data[i + 3], '08b')
-
-        if bv[:3] == oneb and ((i + 1) < len(data)):
-            if nxt1[:2] != nxtb:
-                return False
-        elif bv[:4] == twob and ((i + 2) < len(data)):
-            if nxt1[:2] != nxtb or nxt2[:2] != nxtb:
-                return False
-        elif bv[:5] == threeb and ((i + 3) < len(data)):
-            if nxt1[:2] != nxtb or nxt2[:2] != nxtb or nxt3[:2] != nxtb:
-                return False
-        elif bv[:5] == '11111':
-            return False
-
+        if data[i] >= 192 and data[i] <= 247:
+            if (data[i] >= 192 and data[i] <= 223) and ((i + 1) < len(data)):
+                if data[i+1] < 128 or data[i+1] > 191:
+                    return False
+            elif data[i] >= 224 and data[i] <= 239 and ((i + 2) < len(data)):
+                if ((data[i+1] < 128 or data[i+2] < 128) or
+                        (data[i+1] > 191 or data[i+2] > 191)):
+                    return False
+            elif data[i] >= 240 and data[i] <= 247 and ((i + 3) < len(data)):
+                if ((data[i+1] < 127 or data[i+2] < 128 or data[i+3] < 128) or
+                        (data[i+1] > 191 or data[i+2] > 191 or
+                            data[i+3] > 191)):
+                    return False
     return True
