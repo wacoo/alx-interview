@@ -14,8 +14,10 @@ the 8 least significant bits of each integer
 
 def validUTF8(data):
     ''' return True or False depending on whether the data given is UTF-8 '''
+    res = True
     for i in range(len(data)):
         if data[i] >= 192 and data[i] <= 247:
+            res = True
             if (data[i] >= 192 and data[i] <= 223) and ((i + 1) < len(data)):
                 if data[i+1] < 128 or data[i+1] > 191:
                     return False
@@ -29,5 +31,5 @@ def validUTF8(data):
                             data[i+3] > 191)):
                     return False
         elif data[i] > 247:
-            return False
-    return True
+            res = False
+    return res
