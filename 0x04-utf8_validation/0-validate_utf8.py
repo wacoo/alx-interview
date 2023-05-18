@@ -24,8 +24,10 @@ def validUTF8(data):
                         (data[i+1] > 191 or data[i+2] > 191)):
                     return False
             elif data[i] >= 240 and data[i] <= 247 and ((i + 3) < len(data)):
-                if ((data[i+1] < 127 or data[i+2] < 128 or data[i+3] < 128) or
+                if ((data[i+1] < 128 or data[i+2] < 128 or data[i+3] < 128) or
                         (data[i+1] > 191 or data[i+2] > 191 or
                             data[i+3] > 191)):
                     return False
+        elif data[i] >= 247:
+            return False
     return True
