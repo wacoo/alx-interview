@@ -20,11 +20,11 @@ def validUTF8(data):
                 if data[i+1] < 128 or data[i+1] > 191:
                     return False
             elif data[i] >= 224 and data[i] <= 239 and ((i + 2) < len(data)):
-                if (((data[i+1] and data[i+2]) < 128) or
-                        ((data[i+1] and data[i+2]) > 191)):
+                if (((data[i+1] or data[i+2]) < 128) or
+                        ((data[i+1] or data[i+2]) > 191)):
                     return False
             elif data[i] >= 240 and data[i] <= 247 and ((i + 3) < len(data)):
-                if (((data[i+1] and data[i+2] and data[i+3]) < 128) or
-                        ((data[i+1] and data[i+2] and data[i+3]) > 191)):
+                if (((data[i+1] or data[i+2] or data[i+3]) < 128) or
+                        ((data[i+1] or data[i+2] or data[i+3]) > 191)):
                     return False
     return True
